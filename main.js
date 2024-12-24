@@ -46,7 +46,8 @@ const notify = async (contents) => {
 }
 
 const main = async () => {
-  await glados()
+  const contents = await glados();
+  console.log('GLaDOS Result:', contents);
 }
 
 main()
