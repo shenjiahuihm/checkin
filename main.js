@@ -107,14 +107,19 @@ const notify = async (notice) => {
         })
       }
     } catch (error) {
-      console.error('通知渠道异常：', error)
       throw error
     }
   }
 }
 
 const main = async () => {
-  await notify(await glados())
+  try {
+    const notice = await glados()
+    console.log('==== 签到结果 notice ====', notice) // 加一行，看notice数组内容
+    await notify(notice)
+    console.log('==== 通知发送完成 ====')
+  } catch (err) {
+    console.error('顶层捕获异常：', err)
+  }
 }
-
-main()
+main().catch(e => console.error('最外层Promise异常：', e))
