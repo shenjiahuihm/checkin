@@ -107,6 +107,7 @@ const notify = async (notice) => {
         })
       }
     } catch (error) {
+      console.error('通知渠道异常：', error)
       throw error
     }
   }
